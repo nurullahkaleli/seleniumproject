@@ -21,18 +21,18 @@ public class Day02_WebDriverManager {
 //        System.setProperty("webdriver.edge.driver","./driver/edgedriver");//edge setup
 //        WebDriver edge = new EdgeDriver();
 
-//        *****WITH WEBDRIVER MANAGER*****
-//        WebDriverManager.chromedriver().setup();//chrome setup
-//        WebDriver driver = new ChromeDriver();
-//        driver.manage().window().maximize();
-//        driver.get("https://www.techproeducation.com");
+//         *****WITH WEBDRIVER MANAGER*****
+         WebDriverManager.chromedriver().setup();//chrome setup
+         WebDriver driver = new ChromeDriver();
+         driver.manage().window().maximize();
+         driver.get("https://www.techproeducation.com");
 
-                WebDriverManager.firefoxdriver().setup();//firefox setup
-        WebDriver driver = new FirefoxDriver();//firefox driver create
-        driver.manage().window().maximize();//maximize
-        driver.get("https://www.techproeducation.com");//navigate
+//                WebDriverManager.firefoxdriver().setup();//firefox setup
+//         WebDriver driver = new FirefoxDriver();//firefox driver create
+//         driver.manage().window().maximize();//maximize
+//         driver.get("https://www.techproeducation.com");//navigate
 
-        driver.quit();
+         driver.quit();
 
     }
 }
