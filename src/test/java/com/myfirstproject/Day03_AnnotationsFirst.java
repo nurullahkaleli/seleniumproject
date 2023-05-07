@@ -2,7 +2,7 @@ package com.myfirstproject;
 
 import org.junit.*;
 
-public class Day_03AnnotationsFirst {
+public class Day03_AnnotationsFirst {
 
     /*
      ***. There are 6 junit annotations
