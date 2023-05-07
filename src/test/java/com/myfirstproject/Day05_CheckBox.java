@@ -1,7 +1,7 @@
 package com.myfirstproject;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -11,56 +11,36 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-import static org.junit.Assert.assertTrue;
-
 public class Day05_CheckBox {
-
-    /*
-     Go to https://testcenter.techproeducation.com/index.php?page=checkboxes
-     Click on checkbox1 if box is not selected
-     Click on checkbox2 if box is not selected
- */
     WebDriver driver;
-
     @Before
     public void setUp(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://testcenter.techproeducation.com/index.php?page=checkboxes");
     }
-
+    @Test
+    public void checkboxTest(){
+//       Then click on checkbox1 if box is not selected
+//       Locating the element by xpath
+        WebElement checkbox1 = driver.findElement(By.xpath("//input[@id='box1']"));
+//       is checkbox1 is already selected
+        boolean isCheckbox1Selected = checkbox1.isSelected();
+//       ! = NOT
+        if(!isCheckbox1Selected){
+            checkbox1.click();
+        }
+//       Then click on checkbox2 if box is not selected
+        if(!driver.findElement(By.xpath("//input[@id='box2']")).isSelected()){
+            driver.findElement(By.xpath("//input[@id='box2']")).click();
+        }
+//       Then verify that checkbox
+        Assert.assertTrue(checkbox1.isSelected());//PASS is checkbox1 is selected. FAILS if checkbox1 is NOT selected
+    }
     @After
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(3000);
+    public void tearDown(){
         driver.quit();
     }
-
-    @Test
-    public void checkBox() throws InterruptedException {
-//        Go to https://testcenter.techproeducation.com/index.php?page=checkboxes
-        driver.get("https://testcenter.techproeducation.com/index.php?page=checkboxes");
-
-//        Click on checkbox1 if box is not selected
-        //Locate the checkbox1
-        WebElement box1 = driver.findElement(By.id("box1")); // same(if we wat we can out xpath)  WebElement box1 = driver.findElement(By.xpath("//input[@id='box1']"));
-       //System.out.println("box1.isSelected() = " + box1.isSelected());
-        if(!box1.isSelected()){   // !box1.isSelected() ==> gives true. ! coverts value to contrary
-            Thread.sleep(3000);
-            box1.click();
-        }
-        assertTrue(box1.isSelected());
-
-
-//        Click on checkbox2 if box is not selected
-        //Locate the checkbox1
-        WebElement box2 = driver.findElement(By.id("box2")); // same(if we wat we can out xpath) WebElement box2 = driver.findElement(By.xpath("//input[@id='box2']"));
-        //System.out.println("box1.isSelected() = " + box1.isSelected());
-        if(!box2.isSelected()){
-            box2.click();
-        }
-        assertTrue(box2.isSelected());
-
-    }
-
 }

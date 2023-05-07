@@ -1,71 +1,54 @@
 package com.myfirstproject;
-
 import com.github.javafaker.Faker;
 import org.junit.Test;
 
 public class Day05_JavaFaker {
-
     /*
-        Test Data: Username, password, name, lastname, address, zipcode, ssn, title etc...
-        Where do we get these test data?
-        BA - Business Analyst ==> Because he/she writes requirements like acceptance criteria
-        Test Lead
-        Manual Tester
-        Team Lead
-        PO - Maintains product backlog
-        Developer
-        From Database
-        From API requests
-        AND ==>  Java Faker as mock data
-     */
+        Data : username,password,phone number,test environment, city,ssn,url,job title...
+        -Where do you get your test data in your company?
+        -BA - Business Analyst > writes the acceptance criteria or requirement
+        -Test Lead
+        -Manual Tester
+        -Tech Lead(Team Lead)
+        -PO - Product Owner > maintains product backlog
+        -Developers
+        -From Database
+        -From API calls
+        in addition to all these, we can use java faker if we need some fake data
 
+    */
     @Test
     public void javaFaker(){
-        //1st Step: Create Faker object
+//      1. Create a Faker object
         Faker faker = new Faker();
+//      2. User faker object or generate fake test data
+        String firstName = faker.name().firstName();
+        System.out.println(firstName);
 
-        //2nd Step: By using Generate fake data
-        String firstname = faker.name().firstName();
-        System.out.println("firstname = " + firstname);
-
-        //It is also possible to use instance() static method without creating object:
-        String firstName2 = Faker.instance().name().firstName();
-        System.out.println("firstName2 = " + firstName2);
-
-        String fullName = faker.name().fullName();
-        System.out.println("fullName = " + fullName);
-
-        //Username
-        System.out.println(faker.name().username());
-
-        //city
+//      last name
+        System.out.println(faker.name().lastName());
+//      title
+        System.out.println(faker.name().title());
+//      city
         System.out.println(faker.address().city());
-
-        //fullAddress
-        System.out.println(faker.address().fullAddress());
-
-        //zipCode
-        System.out.println(faker.address().zipCode());
-
-        //timeZone
-        System.out.println(faker.address().timeZone());
-
-        //state
-        System.out.println(faker.address().state());
-
-        //numberBetween ==> Random number --> First is inclusive, second is exclusive
-        System.out.println("faker.number().numberBetween(1,10) = "+ faker.number().numberBetween(1,10));
-
-        //emailAddress
-        System.out.println("faker.internet().emailAddress() = " + faker.internet().emailAddress());
-
-        //funnyName
-        System.out.println("faker.funnyName().name() = " + faker.funnyName().name());
-
-        //birthday
-        System.out.println("faker.date().birthday() = " + faker.date().birthday());
-
-
+//      state
+        System.out.println("State: "+faker.address().state());
+//      country
+        System.out.println("Country: "+faker.address().country());
+//      address
+        System.out.println("Full Address "+faker.address().fullAddress());
+//      zip code
+        System.out.println("Zip code: "+faker.address().zipCode());
+//      random number: 10 digit
+        System.out.println(faker.number().digits(10));
+//      cell phone number
+        System.out.println(faker.phoneNumber().cellPhone());
+//      ssn
+        System.out.println(faker.idNumber().ssnValid());
+//      email
+        System.out.println(faker.internet().emailAddress());
+//      birthday
+        System.out.println(faker.date().birthday());
 
 
     }
