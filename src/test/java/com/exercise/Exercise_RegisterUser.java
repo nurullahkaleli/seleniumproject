@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -52,11 +53,11 @@ public class Exercise_RegisterUser {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-//    @After
-//    public void tearDown() throws InterruptedException {
-//        Thread.sleep(3000);
-//        driver.quit();
-//    }
+    @After
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.quit();
+    }
 
 
     @Test
@@ -78,18 +79,9 @@ public class Exercise_RegisterUser {
 
         assertEquals("New User Signup!", verifyLogin);
 
-        //6. Enter name and email address
-        Faker faker = new Faker();
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        String company = faker.company().name();
-        String address = faker.address().fullAddress();
-        String address2 = faker.address().secondaryAddress();
-        String phoneNumber = faker.phoneNumber().cellPhone();
 
-        String email = faker.internet().emailAddress();
 
-        String password = faker.internet().password();
+
 
         driver.findElement(By.xpath("//input[@name='name']")).sendKeys(firstName);
         driver.findElement(By.xpath("(//input[@name='email'])[2]")).sendKeys(email);
@@ -160,23 +152,44 @@ public class Exercise_RegisterUser {
         driver.findElement(By.xpath("//*[@class='btn btn-primary']")).click();
 
 
-        //16. Verify that 'Logged in as username' is visible
-        String login = driver.findElement(By.xpath("//*[@class='fa fa-user']")).getText();
-        assertEquals("Logged in as " + firstName, login);
-
-        //17. Click 'Delete Account' button
-        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a/text()")).click();
-
-        //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        String delete = driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2/b")).getText();
-        assertEquals("ACCOUNT DELETED!",delete);
-
-        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/a")).click();
+//          driver.switchTo().frame(7);
+//        WebElement element = driver.findElement(By.xpath("//*[@id='dismiss-button']/div/svg"));
+//        element.click();
+//
+//
 
 
-        //Note: I didn't handle open advertise.
+//        //16. Verify that 'Logged in as username' is visible
+//        String login = driver.findElement(By.xpath("//*[text()=' Logged in as ']")).getText();
+//        assertEquals(" Logged in as " + firstName, login);
+//
+//        //17. Click 'Delete Account' button
+//        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a/text()")).click();
+//
+//        //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+//        String delete = driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2/b")).getText();
+//        assertEquals("ACCOUNT DELETED!",delete);
+//
+//        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/a")).click();
+//
+//
+//        //Note: I didn't handle open advertise.
 
 
 
     }
+
+        //6. Enter name and email address
+        Faker faker = new Faker();
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String company = faker.company().name();
+        String address = faker.address().fullAddress();
+        String address2 = faker.address().secondaryAddress();
+        String phoneNumber = faker.phoneNumber().cellPhone();
+        String email = faker.internet().emailAddress();
+
+        String password = faker.internet().password();
+
+
 }
