@@ -53,11 +53,11 @@ public class Exercise_RegisterUser {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @After
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(3000);
-        driver.quit();
-    }
+//    @After
+//    public void tearDown() throws InterruptedException {
+//        Thread.sleep(3000);
+//        driver.quit();
+//    }
 
 
     @Test
@@ -161,8 +161,14 @@ public class Exercise_RegisterUser {
         //15. Click 'Continue' button
         driver.findElement(By.xpath("//*[@class='btn btn-primary']")).click();
 
+        WebElement iframeElement = driver.findElement(By.xpath("//*[@id='ad_iframe']"));
 
-//          driver.switchTo().frame(7);
+        driver.switchTo().frame(iframeElement);
+
+        driver.findElement(By.xpath("//*[@id='dismiss-button']")).click();
+
+        driver.switchTo().defaultContent();
+
 //        WebElement element = driver.findElement(By.xpath("//*[@id='dismiss-button']/div/svg"));
 //        element.click();
 //
