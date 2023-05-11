@@ -79,9 +79,19 @@ public class Exercise_RegisterUser {
 
         assertEquals("New User Signup!", verifyLogin);
 
+        //6. Enter name and email address
+        Faker faker = new Faker();
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String company = faker.company().name();
+        String address = faker.address().fullAddress();
+        String address2 = faker.address().secondaryAddress();
+        String phoneNumber = faker.phoneNumber().cellPhone();
+        String email = faker.internet().emailAddress();
+        String password = faker.internet().password();
 
-
-
+        System.out.println("email = " + email);
+        System.out.println("password = " + password);
 
         driver.findElement(By.xpath("//input[@name='name']")).sendKeys(firstName);
         driver.findElement(By.xpath("(//input[@name='email'])[2]")).sendKeys(email);
@@ -179,17 +189,7 @@ public class Exercise_RegisterUser {
 
     }
 
-        //6. Enter name and email address
-        Faker faker = new Faker();
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        String company = faker.company().name();
-        String address = faker.address().fullAddress();
-        String address2 = faker.address().secondaryAddress();
-        String phoneNumber = faker.phoneNumber().cellPhone();
-        String email = faker.internet().emailAddress();
 
-        String password = faker.internet().password();
 
 
 }

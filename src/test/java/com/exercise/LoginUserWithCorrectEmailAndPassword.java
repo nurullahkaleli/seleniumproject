@@ -14,7 +14,7 @@ import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 
-public class LoginUserWithCorrectEmailAndPassword extends Exercise_RegisterUser{
+public class LoginUserWithCorrectEmailAndPassword{
 
     /*
         1. Launch browser
@@ -68,8 +68,9 @@ public class LoginUserWithCorrectEmailAndPassword extends Exercise_RegisterUser{
         assertEquals("Login to your account", verifyLogin);
 
         //6. Enter correct email address and password
-        driver.findElement(By.xpath("//*[@name='email']")).sendKeys(email);
-        driver.findElement(By.xpath("//*[@name='password']")).sendKeys(password);
+        driver.findElement(By.xpath("//*[@name='email']")).sendKeys("cherry.erdman@gmail.com");
+        driver.findElement(By.xpath("//*[@name='password']")).sendKeys("ba8w2rnsex07");
+
 
         //7. Click 'login' button
         driver.findElement(By.xpath("(//*[@type='submit'])[1]")).click();
