@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Day10_ScreenshotsOfEntirePage extends TestBase {
 
-    //    CREATEA A REUSABLE METHOD THAT WILL TAKE A SCREENSHOT IN THE TEST BASE-DONE
+    //    CREATE A REUSABLE METHOD THAT WILL TAKE A SCREENSHOT IN THE TEST BASE-DONE
 //    Extent Test Base
 //    Copy the code from Day09 Auto Complete
 //    Import the classes if you see any red

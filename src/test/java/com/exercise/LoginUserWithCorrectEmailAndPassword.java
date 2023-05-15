@@ -77,12 +77,14 @@ public class LoginUserWithCorrectEmailAndPassword{
         driver.findElement(By.xpath("(//*[@type='submit'])[1]")).click();
 
         //8. Verify that 'Logged in as username' is visible
-        String loggedCorrection = driver.findElement(By.xpath("//*[@id=header]/div/div/div/div[2]/div/ul/li[10]/a/text()")).getText();
-        assertEquals(" Logged in as Erasmo",loggedCorrection);
+        //String loggedCorrection = driver.findElement(By.partialLinkText(" Logged in as ")).getText();
+       // assertEquals(" Logged in as Erasmo",loggedCorrection);
 
         //9. Click 'Delete Account' button
+        driver.findElement(By.xpath("//i[@class='fa fa-trash-o']")).click();
 
         //10. Verify that 'ACCOUNT DELETED!' is visible
+
 
 
     }

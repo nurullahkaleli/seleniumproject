@@ -85,7 +85,7 @@ public abstract class TestBase {
 //        Create a date for giving dynamic name otherwise the screenshots overrides
         String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());//getting local date in this format
 //                     CURRENT PROJECT FOLDER         foldername   subfoldername imagename
-        String path = System.getProperty("user.dir") + "/test-output/Screenshots/" + now + "image.png";
+        String path = System.getProperty("user.dir") + "/test-output/Screenshots/" + now + "image.png"; 
 
 //        3. Save the image in the path as a file
         FileUtils.copyFile(image, new File(path));
