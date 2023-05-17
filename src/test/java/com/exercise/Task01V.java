@@ -12,9 +12,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 import java.util.List;
 
-public class Task01 {
+public class Task01V {
 
-      /*
+     /*
     Go to ebay page
     Click on electronics section
     Click on all the images with a Width of 225 and a Length of 225
@@ -22,10 +22,9 @@ public class Task01 {
     Close the page
      */
     static WebDriver driver;
-    static List<WebElement> products;
+
     @BeforeClass
     public static void setUp(){
-
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -35,8 +34,7 @@ public class Task01 {
 
     @Test
     public void ebayTest() throws InterruptedException {
-
-//Go to ebay page
+//        Go to ebay page
         driver.get("https://www.ebay.com/");
 
 //        Click on electronics section
@@ -44,24 +42,26 @@ public class Task01 {
 
 //        Click on all the images with a Width of 225 and a Length of 225
 //        Print the page title of each page
-
-        products = driver.findElements(By.xpath("//*[@width='225' and @height='225']"));
-        for (int i = 0; i<products.size();i++){
-            products = driver.findElements(By.xpath("//*[@width='225' and @height='225']"));
-            products.get(i).click();
-            Thread.sleep(2000);
-            System.out.println(i + 1 + ". title: " + driver.getTitle());
-            Thread.sleep(2000);
+        List<WebElement> images = driver.findElements(By.xpath("//img[@width='225'][@height='225']"));
+        for(WebElement image: images){
+            Thread.sleep(5000);
+            image.click();
+            System.out.println("driver.getTitle() = " + driver.getTitle());
+            Thread.sleep(5000);
             driver.navigate().back();
-            Thread.sleep(2000);
-
         }
 
     }
 
-    //        Close the page
+
+//        Close the page
+
     @AfterClass
     public static void tearDown(){
+
         driver.quit();
     }
+
+
+
 }

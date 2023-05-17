@@ -59,7 +59,7 @@ Then
        }
        //Also we make faker class
        @Test
-       public void testfaker() throws InterruptedException {
+       public void testFaker() throws InterruptedException {
 
 //        Go to url : https://phptravels.com/demo/
            driver.get("https://phptravels.com/demo/");

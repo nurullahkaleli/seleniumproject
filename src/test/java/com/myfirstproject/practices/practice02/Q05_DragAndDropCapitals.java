@@ -6,13 +6,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import static org.junit.Assert.assertTrue;
+
 public class Q05_DragAndDropCapitals extends TestBase {
 
     // Go to URL : http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html
     // Match capitals with countries
 
     @Test
-    public void test(){
+    public void test() throws InterruptedException {
 
         // Go to URL : http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html
         driver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
@@ -41,14 +43,23 @@ public class Q05_DragAndDropCapitals extends TestBase {
         Actions actions = new Actions(driver);
         actions.
                 dragAndDrop(capital1,country1).
-                dragAndDrop(capital2,country3).
+                dragAndDrop(capital2,country2).
+                dragAndDrop(capital3,country3).
                 dragAndDrop(capital4,country4).
                 dragAndDrop(capital5,country5).
                 dragAndDrop(capital6,country6).
+                dragAndDrop(capital7,country7).
                 build().
                 perform();
 
         //Homework: Assert they are all dragged
+        driver.findElement(By.xpath("(//div[@style='visibility: visible; background-color: rgb(0, 255, 0);'])[1]")).isDisplayed();
+        driver.findElement(By.xpath("(//div[@style='visibility: visible; background-color: rgb(0, 255, 0);'])[2]")).isDisplayed();
+        driver.findElement(By.xpath("(//div[@style='visibility: visible; background-color: rgb(0, 255, 0);'])[3]")).isDisplayed();
+        driver.findElement(By.xpath("(//div[@style='visibility: visible; background-color: rgb(0, 255, 0);'])[4]")).isDisplayed();
+        driver.findElement(By.xpath("(//div[@style='visibility: visible; background-color: rgb(0, 255, 0);'])[5]")).isDisplayed();
+        driver.findElement(By.xpath("(//div[@style='visibility: visible; background-color: rgb(0, 255, 0);'])[6]")).isDisplayed();
+        driver.findElement(By.xpath("(//div[@style='visibility: visible; background-color: rgb(0, 255, 0);'])[7]")).isDisplayed();
 
 
 

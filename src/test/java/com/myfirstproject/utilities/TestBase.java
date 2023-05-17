@@ -108,5 +108,25 @@ This method accepts
         js.executeScript("arguments[0].click()",element);
     }
 
+    /*
+        This method will take the screenshot of entire page and returns image's path as String
+     */
+    public static String takeScreenshotOfTheEntirePageAsString() throws IOException {
+//        1. TakeScreenShot class with getScreenShotAs method to capture the screenshot
+        File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//
+//        2. Create a path to save the image
+//        Create a date for giving dynamic name otherwise the screenshots overrides
+        String now = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());//getting local date in this format
+//                     CURRENT PROJECT FOLDER         foldername   subfoldername imagename
+        String path = System.getProperty("user.dir") + "/test-output/Screenshots/" + now + "image.png";
+
+//        3. Save the image in the path as a file
+        FileUtils.copyFile(image, new File(path));
+        //FileUtils.copyFile(FILE, FILE PATH); COPY FILE TO THAT FILE PATH
+
+        return path;
+    }
+
 
 }

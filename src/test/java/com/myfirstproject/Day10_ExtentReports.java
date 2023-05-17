@@ -16,6 +16,26 @@ import java.util.Date;
 public class Day10_ExtentReports extends TestBase {
 
     @Test
+    public void extentReportsTest1(){
+
+        driver.get("https://google.com");
+        String googleTitle = driver.getTitle();
+
+        if (googleTitle.contains("Hello!")){
+            extentTest.pass("Test passed. Because Google title does contain Hello!");
+        }else {
+            extentTest.fail("Test failed. Because Google title does not contain Hello!");
+        }
+
+
+        extentTest.pass("Test passed");
+        extentTest.fail("Test failed");
+        extentTest.info("Test info");
+        extentTest.skip("test skipped");
+        extentTest.warning("Warning!!!");
+    }
+
+    @Test
     public void extentReportsTest() throws IOException, InterruptedException {
         //        Given user is on https://testcenter.techproeducation.com/index.php?page=autocomplete
         driver.get("https://testcenter.techproeducation.com/index.php?page=autocomplete");
