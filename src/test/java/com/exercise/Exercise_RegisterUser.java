@@ -53,11 +53,11 @@ public class Exercise_RegisterUser {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-//    @After
-//    public void tearDown() throws InterruptedException {
-//        Thread.sleep(3000);
-//        driver.quit();
-//    }
+    @After
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.quit();
+    }
 
 
     @Test
@@ -160,20 +160,23 @@ public class Exercise_RegisterUser {
 
         //15. Click 'Continue' button
         driver.findElement(By.xpath("//*[@class='btn btn-primary']")).click();
+        //driver.findElement(By.xpath("//*[@id='card']"));
+       // WebElement ad = driver.findElement(By.id("//*[@id='ad_iframe']"));
 
-        WebElement iframeElement = driver.findElement(By.xpath("//*[@id='ad_iframe']"));
 
-        driver.switchTo().frame(iframeElement);
-
-        driver.findElement(By.xpath("//*[@id='dismiss-button']")).click();
-
-        driver.switchTo().defaultContent();
+//        WebElement iframeElement = driver.findElement(By.xpath("//*[@id='ad_iframe']"));
+//
+//        driver.switchTo().frame(iframeElement);
+//
+//        driver.findElement(By.xpath("//*[@id='dismiss-button']")).click();
+//
+//        driver.switchTo().defaultContent();
 
 //        WebElement element = driver.findElement(By.xpath("//*[@id='dismiss-button']/div/svg"));
 //        element.click();
 //
 //
-
+//*[@id="card"]
 
 //        //16. Verify that 'Logged in as username' is visible
 //        String login = driver.findElement(By.xpath("//*[text()=' Logged in as ']")).getText();

@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,7 +75,7 @@ public abstract class TestBase {
     /*
         This method captures sscreenshot of the entire page
      */
-    public void takeScreenshotOfTheEntirePage() throws IOException {
+    public void takeScreenshotOfTheEntirePage() {
 //        1. TakeScreenShot class with getScreenShotAs method to capture the screenshot
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 //
@@ -85,7 +86,11 @@ public abstract class TestBase {
         String path = System.getProperty("user.dir") + "/test-output/Screenshots/" + now + "image.png"; 
 
 //        3. Save the image in the path as a file
-        FileUtils.copyFile(image, new File(path));
+        try {
+            FileUtils.copyFile(image, new File(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         //FileUtils.copyFile(FILE, FILE PATH); COPY FILE TO THAT FILE PATH
 
     }
@@ -102,11 +107,6 @@ This method accepts
 
     }
 
-    // This Method is used to click on given element By using JSExecutor
-    public static void clickByJS(WebElement element){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click()",element);
-    }
 
     /*
         This method will take the screenshot of entire page and returns image's path as String
@@ -127,6 +127,53 @@ This method accepts
 
         return path;
     }
+    /*
+    JAVASCRIPT EXECUTOR METHODS
+   This method scrolls in to the web element we declare in parentheses by using JavaScript executor
+     */
+    public void scrollIntoViewJS(WebElement webElement){
 
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",webElement);
+
+    }
+    //Scroll all the way down method by using JavaScript executor
+    public static void scrollAllTheWayDownJS(){
+
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+    }
+    //Scroll all the way up method by using JavaScript executor
+    public static void scrollAllTheWayUpJS(){
+
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
+
+    }
+
+
+    // This Method is used to click on given element By using JSExecutor
+    //Click method by using JavaScript executor
+    public static void clickByJS(WebElement webElement){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();",webElement);
+
+
+    }
+    //Locate web element method by using JavaScript executor
+    public static WebElement locateElementByJS(String id){
+
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        WebElement element = (WebElement) js.executeScript("return document.getElementById('"+id+"')");
+
+        return element;
+    }
+    //Type into input method by using JavaScript executor
+    public static void setValueByJS(WebElement inputElement, String text){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].setAttribute('value','"+text+"')", inputElement);
+
+    }
 
 }
