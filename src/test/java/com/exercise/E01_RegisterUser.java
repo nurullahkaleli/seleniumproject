@@ -1,10 +1,7 @@
 package com.exercise;
 
 import com.github.javafaker.Faker;
-import com.github.javafaker.Name;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -15,13 +12,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-public class Exercise_RegisterUser {
+public class E01_RegisterUser {
 
     /*
     1. Launch browser
@@ -54,11 +49,11 @@ public class Exercise_RegisterUser {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @After
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(3000);
-        driver.quit();
-    }
+//    @After
+//    public void tearDown() throws InterruptedException {
+//        Thread.sleep(3000);
+//        driver.quit();
+//    }
 
 
     @Test
@@ -162,10 +157,17 @@ public class Exercise_RegisterUser {
         //15. Click 'Continue' button
         driver.findElement(By.xpath("//*[@class='btn btn-primary']")).click();
 
-        List<WebElement> ads = driver.findElementsByClassName("adsbygoogle");
-        for (WebElement ad : ads) {
-            ad.remove();
-        }
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("var ads = document.getElementsByClassName('adsbygoogle');" +
+                "for (var i = 0; i < ads.length; i++) { " +
+                "   var ad = ads[i]; " +
+                "   ad.remove(); " +
+                "}");
+
+//        List<WebElement> ads = driver.findElements(By.className("adsbygoogle"));
+//        for (WebElement ad : ads) {
+//            ad.s;
+//        }
 
 
         //driver.findElement(By.xpath("//*[@id='card']"));
@@ -186,12 +188,12 @@ public class Exercise_RegisterUser {
 //
 //*[@id="card"]
 
-//        //16. Verify that 'Logged in as username' is visible
-//        String login = driver.findElement(By.xpath("//*[text()=' Logged in as ']")).getText();
-//        assertEquals(" Logged in as " + firstName, login);
-//
-//        //17. Click 'Delete Account' button
-//        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a/text()")).click();
+        //16. Verify that 'Logged in as username' is visible
+//        String login = driver.findElement(By.xpath("//i[@class='fa fa-user']")).getText();
+//        assertTrue(login.contains("Logged in as"));
+
+        //17. Click 'Delete Account' button
+ //       driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a/text()")).click();
 //
 //        //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
 //        String delete = driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2/b")).getText();
