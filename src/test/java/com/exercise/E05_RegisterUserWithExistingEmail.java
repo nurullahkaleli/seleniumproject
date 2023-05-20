@@ -49,7 +49,7 @@ public class E05_RegisterUserWithExistingEmail {
     public void test() throws InterruptedException {
 
 //        2. Navigate to url 'http://automationexercise.com'
-        driver.get("http://automationexercise.com");
+        driver.get("https://automationexercise.com");
 
 //        3. Verify that home page is visible successfully
         String correctionPage = driver.findElement(By.xpath("//*[text()=' Home']")).getText();

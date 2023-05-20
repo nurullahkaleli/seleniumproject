@@ -62,7 +62,7 @@ public class E01_RegisterUser {
 
         //1. Launch browser
         //2. Navigate to url 'http://automationexercise.com'
-        driver.get("http://automationexercise.com");
+        driver.get("https://automationexercise.com");
 
         //3. Verify that home page is visible successfully
         String url = driver.getCurrentUrl();
