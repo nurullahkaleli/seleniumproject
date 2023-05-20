@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -160,6 +161,13 @@ public class Exercise_RegisterUser {
 
         //15. Click 'Continue' button
         driver.findElement(By.xpath("//*[@class='btn btn-primary']")).click();
+
+        List<WebElement> ads = driver.findElementsByClassName("adsbygoogle");
+        for (WebElement ad : ads) {
+            ad.remove();
+        }
+
+
         //driver.findElement(By.xpath("//*[@id='card']"));
        // WebElement ad = driver.findElement(By.id("//*[@id='ad_iframe']"));
 
