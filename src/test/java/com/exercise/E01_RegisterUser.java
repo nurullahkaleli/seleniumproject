@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
@@ -44,8 +45,8 @@ public class E01_RegisterUser {
 
     @Before
     public void setUp(){
-        WebDriverManager.edgedriver().setup();
-        driver = new EdgeDriver();
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
@@ -59,7 +60,7 @@ public class E01_RegisterUser {
 
     @Test
 
-    public void registerUser(){
+    public void registerUser() throws InterruptedException {
 
         //1. Launch browser
         //2. Navigate to url 'http://automationexercise.com'
@@ -157,53 +158,32 @@ public class E01_RegisterUser {
 
         //15. Click 'Continue' button
         driver.findElement(By.xpath("//*[@class='btn btn-primary']")).click();
+        Thread.sleep(1000);
 
-//        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-//        jsExecutor.executeScript("var ads = document.getElementsByClassName('adsbygoogle');" +
-//                "for (var i = 0; i < ads.length; i++) { " +
-//                "   var ad = ads[i]; " +
-//                "   ad.remove(); " +
-//                "}");
+        driver.getTitle();
+        try {
+            driver.switchTo().frame("aswift_2").switchTo().frame("ad_iframe");
+            Thread.sleep(3000);
 
-//        List<WebElement> ads = driver.findElements(By.className("adsbygoogle"));
-//        for (WebElement ad : ads) {
-//            ad.s;
-//        }
+            new Actions(driver)
+                    .moveByOffset(35,18)
+                    .click().build().perform();
+            driver.switchTo().defaultContent();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-
-        //driver.findElement(By.xpath("//*[@id='card']"));
-       // WebElement ad = driver.findElement(By.id("//*[@id='ad_iframe']"));
-
-
-        WebElement iframeElement = driver.findElement(By.xpath("//*[@id='ad_iframe']"));
-
-        driver.switchTo().frame(iframeElement);
-
-        driver.findElement(By.xpath("//*[@id='dismiss-button']")).click();
-
-        driver.switchTo().defaultContent();
-
-//        WebElement element = driver.findElement(By.xpath("//*[@id='dismiss-button']/div/svg"));
-//        element.click();
-//
-//
-//*[@id="card"]
 
 //        16. Verify that 'Logged in as username' is visible
-//        String login = driver.findElement(By.xpath("//i[@class='fa fa-user']")).getText();
-//        assertTrue(login.contains("Logged in as"));
+        String login = driver.findElement(By.xpath("//a[text()=' Logged in as ']")).getText();
+        assertTrue(login.contains("Logged in as"));
 
         //17. Click 'Delete Account' button
         driver.findElement(By.xpath("//i[@class='fa fa-trash-o']")).click();
-//
+
 //        //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-//        String delete = driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2/b")).getText();
-//        assertEquals("ACCOUNT DELETED!",delete);
-//
-//        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/a")).click();
-//
-//
-//        //Note: I didn't handle open advertise.
+        String delete = driver.findElement(By.xpath("//h2[@data-qa]")).getText();
+        assertEquals("ACCOUNT DELETED!",delete);
 
 
 
