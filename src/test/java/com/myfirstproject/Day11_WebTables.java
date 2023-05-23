@@ -92,7 +92,7 @@ public class Day11_WebTables extends TestBase {
     public void printColumn5 (){
         driver.get("https://the-internet.herokuapp.com/tables");
         System.out.println("\n===Print Column 5===\n");
-        List<WebElement> column5Data = driver.findElements(By.xpath("(//table)[1]//td[5]"));
+        List<WebElement> column5Data = driver.findElements(By.xpath(" "));
 
         //column5Data.forEach(t-> System.out.println(t.getText()));
         int rowNumber =1;

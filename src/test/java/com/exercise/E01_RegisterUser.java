@@ -9,6 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
@@ -43,8 +44,8 @@ public class E01_RegisterUser {
 
     @Before
     public void setUp(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        WebDriverManager.edgedriver().setup();
+        driver = new EdgeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
@@ -157,12 +158,12 @@ public class E01_RegisterUser {
         //15. Click 'Continue' button
         driver.findElement(By.xpath("//*[@class='btn btn-primary']")).click();
 
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("var ads = document.getElementsByClassName('adsbygoogle');" +
-                "for (var i = 0; i < ads.length; i++) { " +
-                "   var ad = ads[i]; " +
-                "   ad.remove(); " +
-                "}");
+//        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+//        jsExecutor.executeScript("var ads = document.getElementsByClassName('adsbygoogle');" +
+//                "for (var i = 0; i < ads.length; i++) { " +
+//                "   var ad = ads[i]; " +
+//                "   ad.remove(); " +
+//                "}");
 
 //        List<WebElement> ads = driver.findElements(By.className("adsbygoogle"));
 //        for (WebElement ad : ads) {
@@ -174,13 +175,13 @@ public class E01_RegisterUser {
        // WebElement ad = driver.findElement(By.id("//*[@id='ad_iframe']"));
 
 
-//        WebElement iframeElement = driver.findElement(By.xpath("//*[@id='ad_iframe']"));
-//
-//        driver.switchTo().frame(iframeElement);
-//
-//        driver.findElement(By.xpath("//*[@id='dismiss-button']")).click();
-//
-//        driver.switchTo().defaultContent();
+        WebElement iframeElement = driver.findElement(By.xpath("//*[@id='ad_iframe']"));
+
+        driver.switchTo().frame(iframeElement);
+
+        driver.findElement(By.xpath("//*[@id='dismiss-button']")).click();
+
+        driver.switchTo().defaultContent();
 
 //        WebElement element = driver.findElement(By.xpath("//*[@id='dismiss-button']/div/svg"));
 //        element.click();
@@ -188,12 +189,12 @@ public class E01_RegisterUser {
 //
 //*[@id="card"]
 
-        //16. Verify that 'Logged in as username' is visible
+//        16. Verify that 'Logged in as username' is visible
 //        String login = driver.findElement(By.xpath("//i[@class='fa fa-user']")).getText();
 //        assertTrue(login.contains("Logged in as"));
 
         //17. Click 'Delete Account' button
- //       driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a/text()")).click();
+        driver.findElement(By.xpath("//i[@class='fa fa-trash-o']")).click();
 //
 //        //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
 //        String delete = driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2/b")).getText();

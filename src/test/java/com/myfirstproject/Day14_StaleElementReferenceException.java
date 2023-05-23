@@ -13,7 +13,7 @@ public class Day14_StaleElementReferenceException extends TestBase {
  *Reasons may be trying to use the same reference after refreshing the page,
  or going back and forward between the pages
  *SOLUTION: Try not using the old reference
- And relocate hte element one more time
+ And relocate the element one more time
   */
     @Test
     public void staleElementReferenceExceptionTest1(){

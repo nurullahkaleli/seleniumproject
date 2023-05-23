@@ -25,7 +25,7 @@ public class Day14_TimeOutException extends TestBase {
 //        waitForVisibility(driver.findElement(By.name("twotabsearchtextbox")),15);//NoSuchElementException
         waitForVisibility(By.name("twotabsearchtextbox"),25);//TimeoutException.(name should be id)
         waitForVisibility(By.id("wrong-fake-id"),25);//TimeoutException.(id value should be twotabsearchtextbox)
-        // cause after explicit wait time, element is not still found
+//        cause after explicit wait time, element is not still found
 //        driver.findElement(By.name("twotabsearchtextbox"));//NoSuchElementException
 //        Question: if you use explicit wait and that step fails what kind of exception do you get?
 //        Answer  : timeout
