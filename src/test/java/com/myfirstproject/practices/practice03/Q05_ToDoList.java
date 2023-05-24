@@ -44,10 +44,23 @@ public class Q05_ToDoList extends TestBase {
         //Rest is homework...
 
 //        Strikethrough all todos.
+        List<WebElement> strikethrough = driver.findElements(By.xpath("//li"));
+
+        for (WebElement w : strikethrough){
+            w.click();
+        }
 
 //        Delete all todos.
+        List<WebElement> delete = driver.findElements(By.xpath("//i[@class='fa fa-trash']"));
+
+        for (WebElement w : delete){
+            w.click();
+        }
 
 //        Assert that all todos deleted.
+        driver.findElement(By.xpath("//i[@id='plus-icon']")).click();
+        WebElement emptyList = driver.findElement(By.xpath("//input[@style='display: none;']"));
+        emptyList.isDisplayed();
 
 
     }
