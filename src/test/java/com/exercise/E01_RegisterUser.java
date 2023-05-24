@@ -2,6 +2,7 @@ package com.exercise;
 
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -51,11 +52,11 @@ public class E01_RegisterUser {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-//    @After
-//    public void tearDown() throws InterruptedException {
-//        Thread.sleep(3000);
-//        driver.quit();
-//    }
+    @After
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.quit();
+    }
 
 
     @Test
