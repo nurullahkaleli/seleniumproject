@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
@@ -66,19 +67,31 @@ public class E02_LoginUserWithCorrectEmailAndPassword {
         assertEquals("Login to your account", verifyLogin);
 
         //6. Enter correct email address and password
-        driver.findElement(By.xpath("//*[@name='email']")).sendKeys("arnold.cormier@hotmail.com");
-        driver.findElement(By.xpath("//*[@name='password']")).sendKeys("0oa5ynba");
+        driver.findElement(By.xpath("//*[@name='email']")).sendKeys("laurence.larkin@gmail.com");
+        driver.findElement(By.xpath("//*[@name='password']")).sendKeys("6gxn2acg");
 
 
         //7. Click 'login' button
         driver.findElement(By.xpath("(//*[@type='submit'])[1]")).click();
 
         //8. Verify that 'Logged in as username' is visible
-        //String loggedCorrection = driver.findElement(By.partialLinkText(" Logged in as ")).getText();
-       // assertEquals(" Logged in as Erasmo",loggedCorrection);
+        String loggedCorrection = driver.findElement(By.xpath("//*[text()=' Logged in as ']")).getText();
+        assertEquals("Logged in as Janis",loggedCorrection);
+
+        try {
+            driver.switchTo().frame("aswift_2").switchTo().frame("ad_iframe");
+            Thread.sleep(3000);
+
+            new Actions(driver)
+                    .moveByOffset(35,18)
+                    .click().build().perform();
+            driver.switchTo().defaultContent();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         //9. Click 'Delete Account' button
-        driver.findElement(By.xpath("//i[@class='fa fa-trash-o']")).click();
+        driver.findElement(By.xpath("//*[@href='/delete_account']")).click();
 
         //10. Verify that 'ACCOUNT DELETED!' is visible
         String verify = driver.findElement(By.xpath("//h2[@class='title text-center']")).getText();

@@ -1,5 +1,6 @@
 package com.myfirstproject;
 
+import com.myfirstproject.utilities.LoggerUtils;
 import com.myfirstproject.utilities.TestBase;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -20,10 +21,12 @@ public class Day08_Actions1 extends TestBase {
     @Test
     public void contextClickTest(){
 
+        LoggerUtils.info("Going to the page");
 //        Given go to https://testcenter.techproeducation.com/index.php?page=context-menu
         driver.get("https://testcenter.techproeducation.com/index.php?page=context-menu");
 
 //        When use right-click on the box
+        LoggerUtils.info("Right clicking the box");
         WebElement box = driver.findElement(By.id("hot-spot"));
         //To right-click on the box we need to use "actions class"
 
@@ -34,11 +37,13 @@ public class Day08_Actions1 extends TestBase {
         actions.contextClick(box).perform();
 
 //        Then verify the alert message is "You selected a context menu"
+        LoggerUtils.info("Getting alert message");
         String alertMessage = driver.switchTo().alert().getText();
-        assertEquals("You selected a context menu",alertMessage);
+        assertEquals("You selected a context menu", alertMessage);
 
 //        And accept the alert
         driver.switchTo().alert().accept();
+        LoggerUtils.info("Test is success!!!");
 
 
     }

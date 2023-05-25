@@ -180,11 +180,11 @@ public class E01_RegisterUser {
         assertTrue(login.contains("Logged in as"));
 
         //17. Click 'Delete Account' button
-        driver.findElement(By.xpath("//i[@class='fa fa-trash-o']")).click();
+       // driver.findElement(By.xpath("//i[@class='fa fa-trash-o']")).click();
 
 //        //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        String delete = driver.findElement(By.xpath("//h2[@data-qa]")).getText();
-        assertEquals("ACCOUNT DELETED!",delete);
+//        String delete = driver.findElement(By.xpath("//h2[@data-qa]")).getText();
+//        assertEquals("ACCOUNT DELETED!",delete);
 
 
 

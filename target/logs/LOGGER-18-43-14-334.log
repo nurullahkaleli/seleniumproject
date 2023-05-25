@@ -1,0 +1,5 @@
+2023-05-24 18:43:14,333 DEBUG i.n.u.i.PlatformDependent0 [main] java.nio.DirectByteBuffer.<init>(long, int): unavailable
+2023-05-24 18:43:14,338 DEBUG i.n.u.i.PlatformDependent [main] sun.misc.Unsafe: available
+2023-05-24 18:43:14,341 DEBUG i.n.u.i.PlatformDependent [main] maxDirectMemory: 2126512128 bytes (maybe)
+2023-05-24 18:43:14,342 DEBUG i.n.u.i.PlatformDependent [main] -Dio.netty.tmpdir: C:\Users\NK\AppData\Local\Temp (java.io.tmpdir)
+2023-05-24 18:43:14,343 DEBUG i.n.u.i.PlatformDependent [main] -Dio.netty.bitMode: 64 (sun.arch.data.model)

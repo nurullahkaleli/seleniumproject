@@ -1,0 +1,3 @@
+2023-05-24 18:19:31,910 WARN c.m.u.LoggerUtils [main] Warn log from Utils class
+2023-05-24 18:19:31,916 INFO c.m.u.LoggerUtils [main] Info log from Utils class
+2023-05-24 18:19:31,916 DEBUG c.m.u.LoggerUtils [main] Debug log from Utils class

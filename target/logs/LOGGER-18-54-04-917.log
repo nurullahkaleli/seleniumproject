@@ -1,0 +1,4 @@
+2023-05-24 18:54:04,908 INFO c.m.u.LoggerUtils [main] Going to the page
+2023-05-24 18:54:06,117 INFO c.m.u.LoggerUtils [main] Right clicking the box
+2023-05-24 18:54:06,418 INFO c.m.u.LoggerUtils [main] Getting alert message
+2023-05-24 18:54:06,523 INFO c.m.u.LoggerUtils [main] Test is success!!!

@@ -1,0 +1,2 @@
+2023-05-24 18:16:42,631 FATAL c.m.u.LoggerUtils [main] Fatal log from Utils class
+2023-05-24 18:16:42,656 ERROR c.m.u.LoggerUtils [main] Error log from Utils class

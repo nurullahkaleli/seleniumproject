@@ -1,0 +1,5 @@
+2023-05-24 18:42:27,408 DEBUG i.n.u.c.GlobalEventExecutor [main] -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
+2023-05-24 18:42:27,488 DEBUG i.n.c.MultithreadEventLoopGroup [main] -Dio.netty.eventLoopThreads: 6
+2023-05-24 18:42:27,565 DEBUG i.n.c.n.NioEventLoop [main] -Dio.netty.noKeySetOptimization: false
+2023-05-24 18:42:27,568 DEBUG i.n.c.n.NioEventLoop [main] -Dio.netty.selectorAutoRebuildThreshold: 512
+2023-05-24 18:42:27,652 TRACE i.n.c.n.NioEventLoop [main] instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@23202c31

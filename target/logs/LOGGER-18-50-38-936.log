@@ -1,0 +1,6 @@
+2023-05-24 18:50:38,933 DEBUG i.n.u.i.ThreadLocalRandom [main] -Dio.netty.initialSeedUniquifier: 0x1dc6828223a43fce
+2023-05-24 18:50:39,411 INFO c.m.u.LoggerUtils [main] Going to the page
+2023-05-24 18:50:40,538 INFO c.m.u.LoggerUtils [main] Right clicking the box
+2023-05-24 18:50:40,812 INFO c.m.u.LoggerUtils [main] Getting alert message
+2023-05-24 18:50:40,879 INFO c.m.u.LoggerUtils [main] Test is success!!!
+2023-05-24 18:50:43,890 TRACE i.n.h.c.h.w.WebSocket08FrameEncoder [AsyncHttpClient-1-4] Encoding WebSocket Frame opCode=8 length=26

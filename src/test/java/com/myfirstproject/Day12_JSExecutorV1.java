@@ -120,7 +120,7 @@ public class Day12_JSExecutorV1 extends TestBase {
         driver.get("https://www.amazon.com");
 
 //        Type porcelain tea set in search box
-        WebElement searchBox = locateElementByJS("twotabsearchtextbox");
+        WebElement searchBox = locateElementsByJS("twotabsearchtextbox");
         searchBox.sendKeys("porcelain tea set");
 
 //        Click on search button
@@ -142,7 +142,7 @@ public class Day12_JSExecutorV1 extends TestBase {
         driver.get("https://www.amazon.com");
 
 //        Type porcelain tea set in search box
-        WebElement searchBox = locateElementByJS("twotabsearchtextbox");
+        WebElement searchBox = locateElementsByJS("twotabsearchtextbox");
         //searchBox.sendKeys(); --> This is regular typing method in selenium. We will create a method that will type by using JavaScriptExecutor
         setValueByJS(searchBox,"porcelain tea set");
 

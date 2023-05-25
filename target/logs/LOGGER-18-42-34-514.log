@@ -1,0 +1,5 @@
+2023-05-24 18:42:34,421 DEBUG i.n.u.i.ThreadLocalRandom [main] -Dio.netty.initialSeedUniquifier: 0xf3b86cac30167370
+2023-05-24 18:42:35,935 INFO c.m.u.LoggerUtils [main] Test is starting and going to homepage
+2023-05-24 18:42:35,935 INFO c.m.u.LoggerUtils [main] Getting the page title
+2023-05-24 18:42:40,814 WARN c.m.u.LoggerUtils [main] Failed!!! Page title is Techpro Education | Online It Courses & Bootcamps
+2023-05-24 18:42:40,822 TRACE i.n.h.c.h.w.WebSocket08FrameEncoder [AsyncHttpClient-1-4] Encoding WebSocket Frame opCode=8 length=26
