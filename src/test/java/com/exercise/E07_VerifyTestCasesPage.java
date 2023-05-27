@@ -1,17 +1,19 @@
 package com.exercise;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 
-public class E06_VerifyTestCasesPage {
+public class E07_VerifyTestCasesPage {
 
     /*
     1. Launch browser
@@ -54,10 +56,25 @@ public class E06_VerifyTestCasesPage {
         driver.findElement(By.xpath("(//*[@href='/test_cases'])[1]")).click();
 
 //        5. Verify user is navigated to test cases page successfully
-        String verify = driver.findElement(By.xpath("//h2[@class='title text-center']")).getText();
 
-        //Google ad
-        // assertEquals("TEST CASES", verify);
+        try {
+            driver.switchTo().frame("aswift_5").switchTo().frame("ad_iframe");
+            Thread.sleep(3000);
+
+            new Actions(driver)
+                    .moveByOffset(35,18)
+                    .click().build().perform();
+            driver.switchTo().defaultContent();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        String verify = driver.findElement(By.xpath("//span[text()='Below is the list of test Cases for you to practice the Automation. Click on the scenario for detailed Test Steps:']")).getText();
+
+
+
+         assertEquals("Below is the list of test Cases for you to practice the Automation. Click on the scenario for detailed Test Steps:", verify);
+
 
 
 

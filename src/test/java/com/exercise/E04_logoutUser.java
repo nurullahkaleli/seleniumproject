@@ -68,17 +68,16 @@ public class E04_logoutUser {
         driver.findElement(By.xpath("(//*[@type='submit'])[1]")).click();
 
 //        8. Verify that 'Logged in as username' is visible
-//        Thread.sleep(2000);
-//        String login = driver.findElement(By.xpath("/html/body/header/div/div/div/div[2]/div/ul/li[10]/a/text()")).getText();
-//        System.out.println("login = " + login);
-//        assertTrue(login.contains("Logged"));
-//
-////        9. Click 'Logout' button
-//        driver.findElement(By.xpath("//a[@href='/logout']")).click();
-//
-////        10. Verify that user is navigated to login page
-//        String verifyLogin2 = driver.findElement(By.xpath("//*[text()='Login to your account']")).getText();
-//        assertEquals("Login to your account", verifyLogin2);
+
+        String login = driver.findElement(By.xpath("//a[text()=' Logged in as ']")).getText();
+        assertTrue(login.contains("Logged in as"));
+
+//        9. Click 'Logout' button
+        driver.findElement(By.xpath("//a[@href='/logout']")).click();
+
+//        10. Verify that user is navigated to login page
+        String verifyLogin2 = driver.findElement(By.xpath("//*[text()='Login to your account']")).getText();
+        assertEquals("Login to your account", verifyLogin2);
 
     }
 }

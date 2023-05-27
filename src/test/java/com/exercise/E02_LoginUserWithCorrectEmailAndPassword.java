@@ -1,6 +1,7 @@
 package com.exercise;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -42,12 +43,12 @@ public class E02_LoginUserWithCorrectEmailAndPassword {
 
     }
 
-//    @After
-//    public void tearDown() throws InterruptedException {
-//        Thread.sleep(2000);
-//        driver.quit();
-//
-//    }
+    @After
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(2000);
+        driver.quit();
+
+    }
 
     @Test
     public void loginUser(){
@@ -67,31 +68,21 @@ public class E02_LoginUserWithCorrectEmailAndPassword {
         assertEquals("Login to your account", verifyLogin);
 
         //6. Enter correct email address and password
-        driver.findElement(By.xpath("//*[@name='email']")).sendKeys("laurence.larkin@gmail.com");
-        driver.findElement(By.xpath("//*[@name='password']")).sendKeys("6gxn2acg");
+        driver.findElement(By.xpath("//*[@name='email']")).sendKeys("bong.cormier@yahoo.com");
+        driver.findElement(By.xpath("//*[@name='password']")).sendKeys("j9s6bibthb8");
 
 
         //7. Click 'login' button
         driver.findElement(By.xpath("(//*[@type='submit'])[1]")).click();
 
         //8. Verify that 'Logged in as username' is visible
-        String loggedCorrection = driver.findElement(By.xpath("//*[text()=' Logged in as ']")).getText();
-        assertEquals("Logged in as Janis",loggedCorrection);
+        String login = driver.findElement(By.xpath("//a[text()=' Logged in as ']")).getText();
+        assertTrue(login.contains("Logged in as"));
 
-        try {
-            driver.switchTo().frame("aswift_2").switchTo().frame("ad_iframe");
-            Thread.sleep(3000);
-
-            new Actions(driver)
-                    .moveByOffset(35,18)
-                    .click().build().perform();
-            driver.switchTo().defaultContent();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
 
         //9. Click 'Delete Account' button
         driver.findElement(By.xpath("//*[@href='/delete_account']")).click();
+
 
         //10. Verify that 'ACCOUNT DELETED!' is visible
         String verify = driver.findElement(By.xpath("//h2[@class='title text-center']")).getText();

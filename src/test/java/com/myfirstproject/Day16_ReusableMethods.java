@@ -38,6 +38,7 @@ public class Day16_ReusableMethods extends TestBase {
         //password
         sendKeysWithTimeout(waitForVisibility(By.id("password"), 5), "123", 10);
         LoggerUtils.info("Password added ...");
+
         //day
         selectByVisibleText(waitForVisibility(By.id("days"), 8), "10");
         //month
