@@ -1,12 +1,14 @@
 package com.exercise;
 
 import com.github.javafaker.Faker;
+import com.myfirstproject.utilities.LoggerUtils;
 import com.myfirstproject.utilities.TestBase;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -29,7 +31,7 @@ public class Task08 extends TestBase {
      */
 
     @Test
-    public void test(){
+    public void test() throws IOException {
 
 //        Go to https://testpages.herokuapp.com/styled/basic-html-form-test.html
         driver.get("https://testpages.herokuapp.com/styled/basic-html-form-test.html");
@@ -45,23 +47,28 @@ public class Task08 extends TestBase {
         chooseFileInput.sendKeys(pathOfFile);
 
 //        Select all checkboxes, radio item 1 and dropdown 1
-        List<WebElement> checkboxes = driver.findElements(By.xpath("//input[@type='checkbox']"));
 
-        for(int i = 0; i<checkboxes.size()-1; i++){
-            checkboxes.get(i).click();
-        }
+        clickCheckboxByIndex(0);
+        clickCheckboxByIndex(1);
+        clickCheckboxByIndex(2);
 
         driver.findElement(By.xpath("(//input[@name='radioval'])[1]")).click();
 
-       waitFor(1);
+
         driver.findElement(By.xpath("//option[@value='ms1']")).click();
+        driver.findElement(By.xpath("//option[@value='ms4']")).click();
         waitFor(2);
 
         WebElement dropdown = driver.findElement(By.name("dropdown"));
-        Select options = new Select(dropdown);
-        options.selectByVisibleText("Drop Down Item 1");
+//        Select options = new Select(dropdown);
+//        options.selectByVisibleText("Drop Down Item 1");
 
-        takeScreenshotOfTheEntirePage();
+        selectByVisibleText(dropdown,"Drop Down Item 1");
+
+
+        extentTest
+                .pass("test is completed successfully")
+                .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
 
 //        Click on submit
         driver.findElement(By.xpath("//input[@value='submit']")).click();
@@ -69,6 +76,8 @@ public class Task08 extends TestBase {
 //        Verify that uploaded file name is on the Form Details
         String fileName = driver.findElement(By.xpath("//li[@id='_valuefilename']")).getText();
         assertEquals("flower.jpeg",fileName);
+
+
 
     }
 }
