@@ -22,13 +22,15 @@ public class Task10 extends TestBase {
         driver.get("https://testpages.herokuapp.com/styled/challenges/growing-clickable.html");
 
 //        Click on "click me" button
+
+       // waitForClickablility(driver.findElement(By.xpath("//button[@id='growbutton']")),10).click();
+        fluentWait("//button[@id='growbutton']",10,9).click();
         waitFor(8);
         driver.findElement(By.xpath("//button[@id='growbutton']")).click();
 
 
 
 //        Verify that "Event Triggered"
-        waitFor(2);
         String text = driver.findElement(By.xpath("//p[text()='Event Triggered']")).getText();
         assertEquals("Event Triggered", text);
 
