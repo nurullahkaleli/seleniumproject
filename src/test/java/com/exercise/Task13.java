@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Task13 {
@@ -31,25 +32,43 @@ public class Task13 {
 //    Saturday	$0
 //    Sunday	    $0
 
-    @Test
-    public void writeEarningList () throws IOException {
-
-//        Save EarningList.xlsx file into your project
-        String path = "resources/EarningList.xlsx";
-
-//        Open the workbook
+  @Test
+    public void excelTest() throws IOException {
+        String path = "resources/EarningsList.xlsx";
         FileInputStream fileInputStream = new FileInputStream(path);
         Workbook workbook = WorkbookFactory.create(fileInputStream);
+        Sheet sheet1 = workbook.getSheet("Sheet1");
 
-//        Open the first worksheet
-        Sheet sheet1 = workbook.getSheet("sheet1");
+        sheet1.getRow(0).createCell(0).setCellValue("Days");
+        sheet1.getRow(0).createCell(1).setCellValue("Earnings");
+        sheet1.getRow(0).createCell(2).setCellValue("Row");
 
-        sheet1.getRow(0).getCell(1).setCellValue("Days");
-        sheet1.getRow(0).getCell(1).setCellValue("Earnings");
-        sheet1.getRow(0).getCell(1).setCellValue("Row");
+        sheet1.getRow(1).createCell(0).setCellValue("Wednesday");
+        sheet1.getRow(1).createCell(1).setCellValue("$632");
+
+        sheet1.getRow(2).createCell(0).setCellValue(" Monday");
+        sheet1.getRow(2).createCell(1).setCellValue(" $512");
+
+        sheet1.getRow(3).createCell(0).setCellValue("Friday");
+        sheet1.getRow(3).createCell(1).setCellValue("$480");
+
+        sheet1.getRow(4).createCell(0).setCellValue("Thursday");
+        sheet1.getRow(4).createCell(1).setCellValue("$344");
+
+        sheet1.getRow(5).createCell(0).setCellValue("Tuesday");
+        sheet1.getRow(5).createCell(1).setCellValue("$205");
 
 
+        sheet1.getRow(6).createCell(0).setCellValue("Saturday");
+        sheet1.getRow(6).createCell(1).setCellValue("$0");
 
+        sheet1.getRow(7).createCell(0).setCellValue("Sunday");
+        sheet1.getRow(7).createCell(1).setCellValue("$0");
+
+
+        FileOutputStream fileOutputStream = new FileOutputStream(path);
+        workbook.write(fileOutputStream);
+        fileInputStream.close();
     }
 
 }
