@@ -1,5 +1,12 @@
 package com.exercise;
 
+import org.apache.poi.ss.usermodel.*;
+import org.junit.Test;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Task13 {
 
     //Task 13:
@@ -23,5 +30,26 @@ public class Task13 {
 //    Friday	    $480
 //    Saturday	$0
 //    Sunday	    $0
+
+    @Test
+    public void writeEarningList () throws IOException {
+
+//        Save EarningList.xlsx file into your project
+        String path = "resources/EarningList.xlsx";
+
+//        Open the workbook
+        FileInputStream fileInputStream = new FileInputStream(path);
+        Workbook workbook = WorkbookFactory.create(fileInputStream);
+
+//        Open the first worksheet
+        Sheet sheet1 = workbook.getSheet("sheet1");
+
+        sheet1.getRow(0).getCell(1).setCellValue("Days");
+        sheet1.getRow(0).getCell(1).setCellValue("Earnings");
+        sheet1.getRow(0).getCell(1).setCellValue("Row");
+
+
+
+    }
 
 }

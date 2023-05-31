@@ -5,9 +5,12 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class Task12 extends TestBase {
 
@@ -61,11 +64,18 @@ public class Task12 extends TestBase {
         System.out.println("heights = " + heights);
 
 //        Calculate the height to build
-        int totalHeight = heights.stream().reduce( 0, (t, u) -> t + u);
-        System.out.println("totalHeight = " + totalHeight);
+        String build = driver.findElement(By.xpath("//table[@summary]//tr[3]//td[3]")).getText();
+        //System.out.println("build = " + build);
+        Integer roofHeight = Integer.parseInt(build.replaceAll("m",""));
+        //System.out.println("buildHeight = " + buildHeight);
 
+        Double roof = roofHeight * 0.05;
+        DecimalFormat df = new DecimalFormat("#.00");
+        String formattedValue = df.format(roof);
+        System.out.println(formattedValue);
 
 //        Assert that build height is 25.45 meters
+        assertEquals("25.45", formattedValue);
 
 
 
